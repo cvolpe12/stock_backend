@@ -19,6 +19,9 @@ gem 'puma', '~> 3.11'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+gem 'dotenv-rails', groups: [:development, :test]
+gem 'rest-client', '~> 2.0', '>= 2.0.2'
+
 gem 'active_model_serializers'
 
 # Reduces boot times through caching; required in config/boot.rb
