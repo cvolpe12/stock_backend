@@ -21,6 +21,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'rest-client', '~> 2.0', '>= 2.0.2'
+gem 'jwt'
 
 gem 'active_model_serializers'
 

@@ -1,7 +1,7 @@
 class Api::V1::AuthController < ApplicationController
 
   def login
-    user = User.find_by(username: params[:username])
+    user = User.find_by(email: params[:email])
     if user && user.authenticate(params[:password])
       # prove that the user exists in our database
       # -> lets send them a token!
@@ -10,7 +10,7 @@ class Api::V1::AuthController < ApplicationController
       jwt = encode_token({user_id: user.id})
       render json: {user: UserSerializer.new(user), jwt: jwt}
     else
-      render json: {errors: "Please enter the correct username and password!"}
+      render json: {errors: "Please enter the correct email and password!"}
     end
   end
 

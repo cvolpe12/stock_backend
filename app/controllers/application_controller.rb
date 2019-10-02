@@ -1,14 +1,13 @@
 class ApplicationController < ActionController::API
+
   def encode_token(payload)
-   # byebug
+
    JWT.encode(payload, "secret")
-   # ENV['KEY']
-   # payload {user_id: 1}
-   # => enaj.fewfwaf.dfadf
+
  end
 
  def decode_token
-   # if headers -> let's decode it else return nil
+   # if headers -> decode it else return nil
    # JWT.decode()
    begin
      JWT.decode(auth_headers, "secret")
@@ -24,10 +23,9 @@ class ApplicationController < ActionController::API
  end
 
  def curr_user
-   # byebug
    user_id = decode_token[0]["user_id"]
    User.find(user_id)
-   # who is the current user maybe we don't need to authorize the route but it might be nice to know
+   # who is the current user maybe we don't need to authorize the route
    # who the user is to see whether or not they can validly access something
  end
 
@@ -37,7 +35,7 @@ class ApplicationController < ActionController::API
  end
 
  def authorized
-   # if there is a curr_user meaning they've been correctly validated
+   # if curr_user 
    # allow them in our application
    # otherwise send an error
    render json: {errors: 'Please log in'} unless logged_in
