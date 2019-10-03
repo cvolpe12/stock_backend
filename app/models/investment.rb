@@ -3,7 +3,7 @@ require 'dotenv/load'
 
 class Investment < ApplicationRecord
   belongs_to :user
-  belongs_to :stock
+  # belongs_to :stock
 
   def self.get_stock_info(stock)
     # print(ENV["API_KEY"])

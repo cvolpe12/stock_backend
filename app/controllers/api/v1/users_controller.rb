@@ -1,4 +1,5 @@
 class Api::V1::UsersController < ApplicationController
+  before_action :find_user, only: [:show]
 
   def index
     @users = User.all
@@ -16,6 +17,10 @@ class Api::V1::UsersController < ApplicationController
     else
       render json: { errors: @user.errors.full_messages }, status: :unprocessible_entity
     end
+  end
+
+  def show
+    render json: @user
   end
 
   private
