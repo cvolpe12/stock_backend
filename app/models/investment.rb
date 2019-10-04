@@ -3,7 +3,11 @@ require 'dotenv/load'
 
 class Investment < ApplicationRecord
   belongs_to :user
-  # belongs_to :stock
+
+  validates_uniqueness_of :ticker, scope: [:user_id]
+  validates :shares, numericality: { only_integer: true }
+
+
 
   def self.get_stock_info(stock)
     # print(ENV["API_KEY"])

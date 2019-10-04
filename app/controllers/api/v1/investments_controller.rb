@@ -8,8 +8,8 @@ class Api::V1::InvestmentsController < ApplicationController
   end
 
   def create
-    byebug
     @investment = Investment.new(user_id: investment_params[:user_id],ticker: @stock["01. symbol"],shares: investment_params[:shares],price_per_share: @stock["05. price"],current_price: @stock["05. price"],open_price: @stock["02. open"],sold: false)
+    byebug
     if @investment.save
       render json: @investment, status: :accepted
     else
